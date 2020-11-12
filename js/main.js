@@ -4,18 +4,23 @@ Features:
     (ex: get the current date, and display how many days remaining until some event)
 2. Create and use a function that accepts two or more values (parameters), 
     calculates or determines a new value based on those inputs, and returns a new value
-3.  TBD
+3.  Create a DX array, retrieve at least one value, and use or display it in your application
 
-Third feature ideas: 
-- Can I substitue a date format instead of the phone number or email address regex? 
-- A form to submit some sort of information
-- Create a DX array that is searchable to look for chronic condition codes
+
+Fourth feature ideas & stretch ideas:  
+- Text conversion MBID -> IVR input.
 - Can I get a CSV file from Aprima w/fake patient information to test ability to parse and display outstanding AR data? 
 
 * * *BREAD CRUMBS* * *
-Just finished: calculate based on external factor.
-Next: start feature two - set up the inputs. 
+Just finished: Adding input for feature 2, and testing that the parameters pass correctly.
+Next: program the function for feature 2. 
 */
+
+function deadlinecalc(x,y){
+     console.log(x);
+     console.log(y);
+   
+}
 
 const today = new Date();
 console.log(`Begin: ${today}`);
@@ -31,3 +36,5 @@ console.log(`90 days ago: ${nintey.getMonth()+1}/${nintey.getDate()}/${nintey.ge
 let oneyear = new Date();
 oneyear.setDate(today.getDate() - 365);
 console.log(`365 days ago: ${oneyear.getMonth()+1}/${oneyear.getDate()}/${oneyear.getFullYear()}`);
+
+
