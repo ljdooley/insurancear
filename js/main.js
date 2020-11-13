@@ -11,15 +11,22 @@ Fourth feature ideas & stretch ideas:
 - Text conversion MBID -> IVR input.
 - Can I get a CSV file from Aprima w/fake patient information to test ability to parse and display outstanding AR data? 
 
+clean it up:
+- create a function for date to string in preferred date format. 
 * * *BREAD CRUMBS* * *
-Just finished: Adding input for feature 2, and testing that the parameters pass correctly.
-Next: program the function for feature 2. 
+Just finished: program the function for feature 2. 
+Next: Text conversion MBID -> IVR input. 
 */
 
-function deadlinecalc(x,y){
-     console.log(x);
-     console.log(y);
-   
+function deadlinecalc(dateofservice, days){
+    //adjust for timezone, so that dateofservice is not one day less than entered.
+    dateofservice = new Date(dateofservice.getTime() + dateofservice.getTimezoneOffset() * 60000);
+    console.log(dateofservice);
+
+    let timelydate = new Date(dateofservice); //set timely date to date of service
+    timelydate.setDate(dateofservice.getDate() + Number(days)); //add day quantity of timely filing deadline to the date of service. 
+
+    console.log(`${timelydate.getMonth()+1}/${timelydate.getDate()}/${timelydate.getFullYear()}`);
 }
 
 const today = new Date();
@@ -27,7 +34,9 @@ console.log(`Begin: ${today}`);
 
 let oneeighty = new Date();
 oneeighty.setDate(today.getDate() - 180);
+console.log(oneeighty);
 console.log(`180 days ago: ${oneeighty.getMonth()+1}/${oneeighty.getDate()}/${oneeighty.getFullYear()}`);
+
 
 let nintey = new Date();
 nintey.setDate(today.getDate() - 90);
