@@ -18,6 +18,10 @@
             <input type ="radio" id="180days" name="deadline" value = "180"><label for="180days">180 days </label>
             <input type ="radio" id="365days" name="deadline" value = "365"><label for="365days">365 days </label><br>
             <button id ="calcdeadline" onclick="deadlinecalc(document.getElementById('DOS').valueAsDate, document.querySelector('input:checked').value)">Calculate</button>
+            <BR>
+
+            
+            <input type="text" id="mbi"><button onclick="mbivalidate(document.getElementById('mbi').value)">Validate</button>
     </main>
     <footer>
         

@@ -16,8 +16,8 @@ clean it up:
 - create a function for date to string in preferred date print out format. 
 
 * * *BREAD CRUMBS* * *
-Just finished: Figuring out regex for MBI
-Next: Implement the MBI validation. Input box -> validate. 
+Just finished: MBI validation works.
+Next: Build a website that actually uses the javascript code & displays the results.  
 */
 
 function deadlinecalc(dateofservice, days){
@@ -29,6 +29,40 @@ function deadlinecalc(dateofservice, days){
     timelydate.setDate(dateofservice.getDate() + Number(days)); //add day quantity of timely filing deadline to the date of service. 
 
     console.log(`${timelydate.getMonth()+1}/${timelydate.getDate()}/${timelydate.getFullYear()}`);
+}
+
+function mbivalidate(mbientered){
+    
+/*Medicare ID are Unique, randomly generated, and "non-intelligent." Non-intellegent means the characters do not have hidden or special meaning
+Format:
+• 11 characters in length, and made up of only numbers and uppercase letters.
+• The MBI’s 2nd, 5th, 8th, and 9th characters are always letters.
+• Characters 1, 4, 7, 10, and 11 are always numbers.
+• The 3rd and 6th characters are letters or numbers.
+• We don’t use dashes in the MBI. They aren’t part of our computer systems and we don’t use them in file formats.
+
+Example from CMS: 1EG4TE5MK73
+
+C A AN N A AN N A A N N
+Where positions hold numbers and letters?
+C – Numeric 1 thru 9 N – Numeric 0 thru 9 AN – Either A or N A – Alphabetic Character (A...Z); Excluding (S, L, O, I, B, Z)
+
+position 1: ^\d{1}
+Position 2: [AC-HJ-KM-NP-RT-Y]{1}
+Position 3: [AC-HJ-KM-NP-RT-Y\d]{1}
+Position 4: \d{1}
+Position 5: [AC-HJ-KM-NP-RT-Y]{1}
+Position 6: [AC-HJ-KM-NP-RT-Y\d]{1}
+Position 7: \d{1}
+Position 8: [AC-HJ-KM-NP-RT-Y]{1}
+Position 9: [AC-HJ-KM-NP-RT-Y]{1}
+Position 10: \d{1}
+Position 11: \d{1}
+*/
+let mbiadjusted = mbientered.replace(/\s+/g, '').toUpperCase(); //remove all whitespace, and change to all uppercase
+
+let mbire = /^\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y]{1}\d{1}\d{1}$/; 
+console.log(mbire.test(mbiadjusted));
 }
 
 const today = new Date();
@@ -47,47 +81,3 @@ console.log(`90 days ago: ${nintey.getMonth()+1}/${nintey.getDate()}/${nintey.ge
 let oneyear = new Date();
 oneyear.setDate(today.getDate() - 365);
 console.log(`365 days ago: ${oneyear.getMonth()+1}/${oneyear.getDate()}/${oneyear.getFullYear()}`);
-
-/*Medicare ID format: 
-Unique
-Randomly generated
-"non-intelligent," which means the characters do not have hidden or special meaning
-
- 11 characters in length, and made up of only numbers and uppercase letters.
- The MBI’s 2nd, 5th, 8th, and 9th characters are always letters.
-• Characters 1, 4, 7, 10, and 11 are always numbers.
-• The 3rd and 6th characters are letters or numbers.
-• We don’t use dashes in the MBI. They aren’t part of our computer systems and we don’t use them in file formats.
-
-Example from CMS: 1EG4-TE5-MK73
-
-C A AN N A AN N A A N N
-Where positions hold numbers and letters?
-C – Numeric 1 thru 9 N – Numeric 0 thru 9 AN – Either A or N A – Alphabetic Character (A...Z); Excluding (S, L, O, I, B, Z)
-Position 1 – numeric values 1 thru 9
-Position 2 – alphabetic values A thru Z (minus S, L, O, I, B, Z)
-Position 3 – alpha-numeric values 0 thru 9 and A thru Z (minus S, L, O, I, B, Z)
-Position 4 – numeric values 0 thru 9
-Position 5 – alphabetic values A thru Z (minus S, L, O, I, B, Z)
-Position 6 – alpha-numeric values 0 thru 9 and A thru Z (minus S, L, O, I, B, Z)
-Position 7 – numeric values 0 thru 9
-Position 8 – alphabetic values A thru Z (minus S, L, O, I, B, Z)
-Position 9 – alphabetic values A thru Z (minus S, L, O, I, B,Z)
-Position 10 – numeric values 0 thru 9
-Position 11 – numeric values 0 thru 9
-
-position 1: ^\d{1}
-Position 2: [AC-HJ-KM-NP-RT-Y]{1}
-Position 3: [AC-HJ-KM-NP-RT-Y\d]{1}
-Position 4: \d{1}
-Position 5: [AC-HJ-KM-NP-RT-Y]{1}
-Position 6: [AC-HJ-KM-NP-RT-Y\d]{1}
-Position 7: \d{1}
-Position 8: [AC-HJ-KM-NP-RT-Y]{1}
-Position 9: [AC-HJ-KM-NP-RT-Y]{1}
-Position 10: \d{1}
-Position 11: \d{1}
-
-B I L O S Z
-AC-HJ-KM-NP-RT-Y
-*/
