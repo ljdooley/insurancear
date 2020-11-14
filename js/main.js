@@ -11,13 +11,14 @@ additional feature ideas & stretch ideas:
 - Text conversion MBID -> IVR input.
 - Searchable array of DX condes for common chronic conditions 
 - Can I get a CSV file from Aprima w/fake patient information to test ability to parse and display outstanding AR data? 
+- CSV file of insurance phone numbers and timely filing deadlines? 
 
 clean it up:
 - create a function for date to string in preferred date print out format. 
 
 * * *BREAD CRUMBS* * *
-Just finished: MBI validation works.
-Next: Build a website that actually uses the javascript code & displays the results.  
+Just finished: Started fleshing out the HTML
+Next: create the function for date to string in preferred date print out format.  
 */
 
 function deadlinecalc(dateofservice, days){
