@@ -8,20 +8,23 @@ Features:
 
 
 additional feature ideas & stretch ideas:  
-- Log historical timely filing dates - so multiple can be display.
-- Text conversion MBID -> IVR input.
 - Searchable array of DX condes for common chronic conditions 
 - Can I get a CSV file from Aprima w/fake patient information to test ability to parse and display outstanding AR data? 
 - CSV file of insurance phone numbers and timely filing deadlines? 
+
+Code clean up:
+- Remove excessive comments, and commented out code snipets. 
+- Add any necessary but missing comments.
 
 Visual clean up:
 -  Remove the borders from the flex containers. 
 - Tweak CSS more to make more visually appealing - move calculate button on timely filing calculator maybe?
 - Select and apply a color scheme.
+- Do I like it with or without the flexgrow on the column groups?
 
 * * *BREAD CRUMBS* * *
-Just finished: CSS flexbox - basic responsiveness. 
-Next: Add more MBI validation details. Change color based on valid or not. 
+Just finished: Added color change for MBI validation, and set input box to always display uppercase. 
+Next: log historical timely filing dates - so multiple can display.
 */
 
 function deadlinecalc(dateofservice, days){
@@ -65,16 +68,19 @@ Position 9: [AC-HJ-KM-NP-RT-Y]{1}
 Position 10: \d{1}
 Position 11: \d{1}
 */
-let mbiadjusted = mbientered.replace(/\s+/g, '').toUpperCase(); //remove all whitespace, and change to all uppercase
+
+let mbiadjusted = mbientered.replace(/\s+/g, '').toUpperCase(); //remove all whitespace, and change to all uppercase. Upper case change needed even though CSS style set to text-transform.
 
 let mbire = /^\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y]{1}\d{1}\d{1}$/; 
-console.log(mbire.test(mbiadjusted));
 
 if (mbire.test(mbiadjusted)){ //if valid
     document.getElementById("mbi").value = mbiadjusted;
+    document.getElementById("mbivalid").style.color = "green";
     document.getElementById("mbivalid").innerHTML = `${mbiadjusted} is a valid Medicare ID`
 } else{
+    document.getElementById("mbivalid").style.color = "red";
     document.getElementById("mbivalid").innerHTML = `${mbientered} is NOT a valid Medicare ID.`
+    document.getElementById("mbi").style.color = "red";
 }
 
 }
@@ -106,6 +112,7 @@ document.getElementById("agingdates").innerHTML = `90 days ago: ${aging90}<br>
 180 days ago: ${aging180}<br>
 365 days ago: ${aging365}`;
 
+document.getElementById("mbi").addEventListener('click', colorchange => document.getElementById("mbi").style.color = "black");
 
 /*let oneeighty = new Date();
 oneeighty.setDate(today.getDate() - 180);

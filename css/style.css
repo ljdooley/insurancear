@@ -15,6 +15,7 @@ main{
     flex-wrap: wrap;
     margin: auto;
     border-style: solid;
+    /*flex-grow: 1;*/
 }
 
 .columngroup2{
@@ -25,9 +26,17 @@ main{
     flex-wrap: wrap;
     margin: auto;
     border-style: solid;
+    /*flex-grow: 1;*/
 }
 
 .timelycalc, .timelydates, .agingar, .mbivalidate{
     padding: 25px;
 }
 
+#mbivalid{
+    font-weight: bold;
+}
+
+#mbi{
+    text-transform: uppercase;
+}
