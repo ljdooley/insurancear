@@ -15,8 +15,8 @@ additional feature ideas & stretch ideas:
 - CSV file of insurance phone numbers and timely filing deadlines? 
 
 * * *BREAD CRUMBS* * *
-Just finished: Printing dates to HTML
-Next: Print out valdiation info for MBI to HTML
+Just finished: Print out valdiation info for MBI to HTML
+Next: Start flushing out HTML and CSS - make site responsive.
 */
 
 function deadlinecalc(dateofservice, days){
@@ -64,6 +64,14 @@ let mbiadjusted = mbientered.replace(/\s+/g, '').toUpperCase(); //remove all whi
 
 let mbire = /^\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y]{1}\d{1}\d{1}$/; 
 console.log(mbire.test(mbiadjusted));
+
+if (mbire.test(mbiadjusted)){ //if valid
+    document.getElementById("mbi").value = mbiadjusted;
+    document.getElementById("mbivalid").innerHTML = `${mbiadjusted} is a valid Medicare ID`
+} else{
+    document.getElementById("mbivalid").innerHTML = `${mbientered} is NOT a valid Medicare ID.`
+}
+
 }
 
 //fomrat date in a string as MM/DD/YYYY
