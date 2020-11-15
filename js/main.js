@@ -13,12 +13,9 @@ additional feature ideas & stretch ideas:
 - Can I get a CSV file from Aprima w/fake patient information to test ability to parse and display outstanding AR data? 
 - CSV file of insurance phone numbers and timely filing deadlines? 
 
-clean it up:
-- create a function for date to string in preferred date print out format. 
-
 * * *BREAD CRUMBS* * *
-Just finished: created the function for date to string in preferred date print out format.
-Next: Print out aging AR dates
+Just finished: created function for calculating aging ar dates to make printing easier.
+Next: Print out aging AR dates to HTML
 */
 
 function deadlinecalc(dateofservice, days){
@@ -75,10 +72,21 @@ function dateformatprint(datetype){
     return printdate;
 }
 
+function agingar(age){
+    let agingdate = new Date()
+    agingdate.setDate(today.getDate() - age);
+    console.log(agingdate);
+    agingdate = dateformatprint(agingdate);
+    return agingdate;
+}
+
 const today = new Date();
 console.log(`Begin: ${today}`);
 
-let oneeighty = new Date();
+aging90 = agingar(90);
+console.log(aging90);
+
+/*let oneeighty = new Date();
 oneeighty.setDate(today.getDate() - 180);
 console.log(oneeighty);
 console.log(dateformatprint(oneeighty));
@@ -91,3 +99,4 @@ console.log(`90 days ago: ${nintey.getMonth()+1}/${nintey.getDate()}/${nintey.ge
 let oneyear = new Date();
 oneyear.setDate(today.getDate() - 365);
 console.log(`365 days ago: ${oneyear.getMonth()+1}/${oneyear.getDate()}/${oneyear.getFullYear()}`);
+*/
