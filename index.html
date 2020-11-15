@@ -14,6 +14,7 @@
     </header>
 
     <main>
+        <div class = "columngroup1">
         <section class = "timelycalc">
         <h3>Timely Filing Calculator</h3>
             <label for="DOS">Date of Service</label><input type="date" id = "DOS"><br>
@@ -27,7 +28,9 @@
         <h3>Timely Filing Dates</h3>
             <p id="timelydeadline">Timely filing deadlines will display here</p>
         </section>
+        </div>
 
+        <div class = "columngroup2">
         <section class = "agingar">
             <h3>Aging AR Dates</h3>
             <p id ="agingdates">Put aging date calculations here</p>
@@ -38,6 +41,7 @@
             <input type="text" id="mbi"><button onclick="mbivalidate(document.getElementById('mbi').value)">Validate</button>
             <p id="mbivalid"></p>
         </section>
+        </div>
     </main>
     <footer>
         

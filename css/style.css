@@ -1,13 +1,33 @@
+
 main{
     display: flex;
-    /*flex-wrap: wrap;*/
-    flex-flow: row wrap;
-    align-items: flex-start;
     margin: auto;
-    justify-content: left;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-main > section{
+.columngroup1{
+    column-count: 2;
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin: auto;
+    border-style: solid;
+}
+
+.columngroup2{
+    column-count: 2;
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    border-style: solid;
+}
+
+.timelycalc, .timelydates, .agingar, .mbivalidate{
+    padding: 25px;
 }
 

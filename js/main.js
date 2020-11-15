@@ -8,16 +8,20 @@ Features:
 
 
 additional feature ideas & stretch ideas:  
-- Add more MBI validation details. Change color based on valid or not. 
 - Log historical timely filing dates - so multiple can be display.
 - Text conversion MBID -> IVR input.
 - Searchable array of DX condes for common chronic conditions 
 - Can I get a CSV file from Aprima w/fake patient information to test ability to parse and display outstanding AR data? 
 - CSV file of insurance phone numbers and timely filing deadlines? 
 
+Visual clean up:
+-  Remove the borders from the flex containers. 
+- Tweak CSS more to make more visually appealing - move calculate button on timely filing calculator maybe?
+- Select and apply a color scheme.
+
 * * *BREAD CRUMBS* * *
-Just finished: Print out valdiation info for MBI to HTML
-Next: Start flushing out HTML and CSS - make site responsive.
+Just finished: CSS flexbox - basic responsiveness. 
+Next: Add more MBI validation details. Change color based on valid or not. 
 */
 
 function deadlinecalc(dateofservice, days){
