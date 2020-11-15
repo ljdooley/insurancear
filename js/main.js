@@ -1,21 +1,22 @@
 /*
 Features: 
-1. Calculate and display data based on an external factor 
+1. (DONE) Calculate and display data based on an external factor 
     (ex: get the current date, and display how many days remaining until some event)
-2. Create and use a function that accepts two or more values (parameters), 
+2. (DONE) Create and use a function that accepts two or more values (parameters), 
     calculates or determines a new value based on those inputs, and returns a new value
 3.  Regex to validate Medicare ID (MBI) format. 
 
 
 additional feature ideas & stretch ideas:  
+- Log historical timely filing dates - so multiple can be display.
 - Text conversion MBID -> IVR input.
 - Searchable array of DX condes for common chronic conditions 
 - Can I get a CSV file from Aprima w/fake patient information to test ability to parse and display outstanding AR data? 
 - CSV file of insurance phone numbers and timely filing deadlines? 
 
 * * *BREAD CRUMBS* * *
-Just finished: created function for calculating aging ar dates to make printing easier.
-Next: Print out aging AR dates to HTML
+Just finished: Printing dates to HTML
+Next: Print out valdiation info for MBI to HTML
 */
 
 function deadlinecalc(dateofservice, days){
@@ -25,8 +26,10 @@ function deadlinecalc(dateofservice, days){
 
     let timelydate = new Date(dateofservice); //set timely date to date of service
     timelydate.setDate(dateofservice.getDate() + Number(days)); //add day quantity of timely filing deadline to the date of service. 
-
-    console.log(`${timelydate.getMonth()+1}/${timelydate.getDate()}/${timelydate.getFullYear()}`);
+    timelydate = dateformatprint(timelydate);
+    dateofservice = dateformatprint(dateofservice);
+    document.getElementById("timelydeadline").innerHTML = `${timelydate} is the deadline for filing date of service ${dateofservice}`;
+    
 }
 
 function mbivalidate(mbientered){
@@ -75,16 +78,21 @@ function dateformatprint(datetype){
 function agingar(age){
     let agingdate = new Date()
     agingdate.setDate(today.getDate() - age);
-    console.log(agingdate);
     agingdate = dateformatprint(agingdate);
     return agingdate;
 }
 
 const today = new Date();
-console.log(`Begin: ${today}`);
+document.getElementById("today").innerHTML = `Today's Date is ${dateformatprint(today)}`;
 
-aging90 = agingar(90);
-console.log(aging90);
+let aging90 = agingar(90);
+let aging180 = agingar(180);
+let aging365 = agingar(365);
+
+document.getElementById("agingdates").innerHTML = `90 days ago: ${aging90}<br>
+180 days ago: ${aging180}<br>
+365 days ago: ${aging365}`;
+
 
 /*let oneeighty = new Date();
 oneeighty.setDate(today.getDate() - 180);

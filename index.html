@@ -10,21 +10,22 @@
 <body>
     <header>
         <h1><center>Insurance AR Tools and Calculations</center></h1>
+        <center><h2 id="today"></h2></center>
     </header>
 
     <main>
-        <h2>Aging AR Dates</h2>
+        <h3>Aging AR Dates</h3>
         <p id ="agingdates">Put aging date calculations here</p>
          
-        <h2>Timely Filing Calculator</h2>
+        <h3>Timely Filing Calculator</h3>
             <label for="DOS">Date of Service</label><input type="date" id = "DOS"><br>
             <input type ="radio" id="90days" name="deadline" value = "90"><label for="90days">90 days </label>
             <input type ="radio" id="180days" name="deadline" value = "180"><label for="180days">180 days </label>
             <input type ="radio" id="365days" name="deadline" value = "365"><label for="365days">365 days </label><br>
             <button id ="calcdeadline" onclick="deadlinecalc(document.getElementById('DOS').valueAsDate, document.querySelector('input:checked').value)">Calculate</button>
-            <p id="timelydeadline">Put timely filing calculation here</p>
+            <p id="timelydeadline"></p>
 
-        <h2>Medicare ID Validation</h2>    
+        <h3>Medicare ID Validation</h3>    
             <input type="text" id="mbi"><button onclick="mbivalidate(document.getElementById('mbi').value)">Validate</button>
     </main>
     <footer>
