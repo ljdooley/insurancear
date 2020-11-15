@@ -4,10 +4,11 @@ Features:
     (ex: get the current date, and display how many days remaining until some event)
 2. (DONE) Create and use a function that accepts two or more values (parameters), 
     calculates or determines a new value based on those inputs, and returns a new value
-3.  Regex to validate Medicare ID (MBI) format. 
+3. (DONE) Regex to validate Medicare ID (MBI) format. 
 
 
 additional feature ideas & stretch ideas:  
+- Add more MBI validation details. Change color based on valid or not. 
 - Log historical timely filing dates - so multiple can be display.
 - Text conversion MBID -> IVR input.
 - Searchable array of DX condes for common chronic conditions 

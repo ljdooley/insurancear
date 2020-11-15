@@ -1,0 +1,13 @@
+main{
+    display: flex;
+    /*flex-wrap: wrap;*/
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin: auto;
+    justify-content: left;
+}
+
+main > section{
+    margin: auto;
+}
+
