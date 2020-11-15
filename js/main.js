@@ -17,8 +17,8 @@ clean it up:
 - create a function for date to string in preferred date print out format. 
 
 * * *BREAD CRUMBS* * *
-Just finished: Started fleshing out the HTML
-Next: create the function for date to string in preferred date print out format.  
+Just finished: created the function for date to string in preferred date print out format.
+Next: Print out aging AR dates
 */
 
 function deadlinecalc(dateofservice, days){
@@ -66,13 +66,22 @@ let mbire = /^\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-N
 console.log(mbire.test(mbiadjusted));
 }
 
+//fomrat date in a string as MM/DD/YYYY
+function dateformatprint(datetype){
+    printmonth = (datetype.getMonth() + 1).toString().padStart(2, 0);
+    printday = datetype.getDate().toString().padStart(2, 0);
+    printyear = datetype.getFullYear().toString();
+    printdate = `${printmonth}/${printday}/${printyear}`;
+    return printdate;
+}
+
 const today = new Date();
 console.log(`Begin: ${today}`);
 
 let oneeighty = new Date();
 oneeighty.setDate(today.getDate() - 180);
 console.log(oneeighty);
-console.log(`180 days ago: ${oneeighty.getMonth()+1}/${oneeighty.getDate()}/${oneeighty.getFullYear()}`);
+console.log(dateformatprint(oneeighty));
 
 
 let nintey = new Date();
