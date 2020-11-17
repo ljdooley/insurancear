@@ -17,7 +17,6 @@ Code clean up:
 - Add any necessary but missing comments.
 
 Visual clean up:
--  Remove the borders from the flex containers. 
 - Tweak CSS more to make more visually appealing - move calculate button on timely filing calculator maybe?
 - Select and apply a color scheme.
 - Do I like it with or without the flexgrow on the column groups?

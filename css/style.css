@@ -1,4 +1,6 @@
-
+header{
+    background-color: #26A65B;
+}
 main{
     display: flex;
     margin: auto;
@@ -14,7 +16,6 @@ main{
     flex-direction: row;
     flex-wrap: wrap;
     margin: auto;
-    border-style: solid;
     /*flex-grow: 1;*/
 }
 
@@ -25,7 +26,6 @@ main{
     flex-direction: row;
     flex-wrap: wrap;
     margin: auto;
-    border-style: solid;
     /*flex-grow: 1;*/
 }
 
