@@ -30,7 +30,6 @@ Next: log historical timely filing dates - so multiple can display.
 function deadlinecalc(dateofservice, days){
     //adjust for timezone, so that dateofservice is not one day less than entered.
     dateofservice = new Date(dateofservice.getTime() + dateofservice.getTimezoneOffset() * 60000);
-    console.log(dateofservice);
 
     let timelydate = new Date(dateofservice); //set timely date to date of service
     timelydate.setDate(dateofservice.getDate() + Number(days)); //add day quantity of timely filing deadline to the date of service. 
@@ -40,8 +39,7 @@ function deadlinecalc(dateofservice, days){
     
 }
 
-function mbivalidate(mbientered){
-    
+function mbivalidate(mbientered){    
 /*Medicare ID are Unique, randomly generated, and "non-intelligent." Non-intellegent means the characters do not have hidden or special meaning
 Format:
 • 11 characters in length, and made up of only numbers and uppercase letters.
@@ -114,17 +112,3 @@ document.getElementById("agingdates").innerHTML = `90 days ago: ${aging90}<br>
 
 document.getElementById("mbi").addEventListener('click', colorchange => document.getElementById("mbi").style.color = "black");
 
-/*let oneeighty = new Date();
-oneeighty.setDate(today.getDate() - 180);
-console.log(oneeighty);
-console.log(dateformatprint(oneeighty));
-
-
-let nintey = new Date();
-nintey.setDate(today.getDate() - 90);
-console.log(`90 days ago: ${nintey.getMonth()+1}/${nintey.getDate()}/${nintey.getFullYear()}`);
-
-let oneyear = new Date();
-oneyear.setDate(today.getDate() - 365);
-console.log(`365 days ago: ${oneyear.getMonth()+1}/${oneyear.getDate()}/${oneyear.getFullYear()}`);
-*/
