@@ -22,20 +22,25 @@ Visual clean up:
 - Do I like it with or without the flexgrow on the column groups?
 
 * * *BREAD CRUMBS* * *
-Just finished: Added color change for MBI validation, and set input box to always display uppercase. 
+Just finished: Added  fcolor changeor MBI validation, and set input box to always display uppercase. 
 Next: log historical timely filing dates - so multiple can display.
 */
 
 function deadlinecalc(dateofservice, days){
     //adjust for timezone, so that dateofservice is not one day less than entered.
     dateofservice = new Date(dateofservice.getTime() + dateofservice.getTimezoneOffset() * 60000);
+    let timelydate = calcTimelyDate(dateofservice, days);
+    dateofservice = dateformatprint(dateofservice);
+    console.log(timelydate);
+    document.getElementById("timelydeadline").innerHTML = `${timelydate} is the deadline for filing date of service ${dateofservice}`;
+}
 
+function calcTimelyDate(dateofservice, days){
+    console.log('reached new function');
     let timelydate = new Date(dateofservice); //set timely date to date of service
     timelydate.setDate(dateofservice.getDate() + Number(days)); //add day quantity of timely filing deadline to the date of service. 
     timelydate = dateformatprint(timelydate);
-    dateofservice = dateformatprint(dateofservice);
-    document.getElementById("timelydeadline").innerHTML = `${timelydate} is the deadline for filing date of service ${dateofservice}`;
-    
+    return timelydate;
 }
 
 function mbivalidate(mbientered){    
