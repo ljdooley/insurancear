@@ -15,5 +15,3 @@ This program consolidates some of the browser tabs that I open on a regular basi
     * The 3rd and 6th characters are letters or numbers.
     * No dashes.
     Information source for MBI format: https://www.cms.gov/medicare/new-medicare-card/understanding-the-mbi-with-format.pdf
-
-# Additional info sections you might need to include.
