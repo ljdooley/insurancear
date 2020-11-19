@@ -14,4 +14,6 @@ This program consolidates some of the browser tabs that I open on a regular basi
     * Characters 1, 4, 7, 10, and 11 are always numbers.
     * The 3rd and 6th characters are letters or numbers.
     * No dashes.
-    Information source for MBI format: https://www.cms.gov/medicare/new-medicare-card/understanding-the-mbi-with-format.pdf
+    * Information source for MBI format: https://www.cms.gov/medicare/new-medicare-card/understanding-the-mbi-with-format.pdf
+    * Valid MBI example given by CMS: 1EG4TE5MK73. 
+

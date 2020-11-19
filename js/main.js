@@ -1,42 +1,13 @@
-/*
-Features: 
-1. (DONE) Calculate and display data based on an external factor 
-    (ex: get the current date, and display how many days remaining until some event)
-2. (DONE) Create and use a function that accepts two or more values (parameters), 
-    calculates or determines a new value based on those inputs, and returns a new value
-3. (DONE) Regex to validate Medicare ID (MBI) format. 
-
-
-additional feature ideas & stretch ideas:  
-- Searchable array of DX condes for common chronic conditions 
-- Can I get a CSV file from Aprima w/fake patient information to test ability to parse and display outstanding AR data? 
-- CSV file of insurance phone numbers and timely filing deadlines? 
-
-Code clean up:
-- Remove excessive comments, and commented out code snipets. 
-- Add any necessary but missing comments.
-
-Visual clean up:
-- Tweak CSS more to make more visually appealing - move calculate button on timely filing calculator maybe?
-- Select and apply a color scheme.
-- Do I like it with or without the flexgrow on the column groups?
-
-* * *BREAD CRUMBS* * *
-Just finished: Added  fcolor changeor MBI validation, and set input box to always display uppercase. 
-Next: log historical timely filing dates - so multiple can display.
-*/
-
 function deadlinecalc(dateofservice, days){
     //adjust for timezone, so that dateofservice is not one day less than entered.
     dateofservice = new Date(dateofservice.getTime() + dateofservice.getTimezoneOffset() * 60000);
     let timelydate = calcTimelyDate(dateofservice, days);
+    
     dateofservice = dateformatprint(dateofservice);
-    console.log(timelydate);
     document.getElementById("timelydeadline").innerHTML = `${timelydate} is the deadline for filing date of service ${dateofservice}`;
 }
 
 function calcTimelyDate(dateofservice, days){
-    console.log('reached new function');
     let timelydate = new Date(dateofservice); //set timely date to date of service
     timelydate.setDate(dateofservice.getDate() + Number(days)); //add day quantity of timely filing deadline to the date of service. 
     timelydate = dateformatprint(timelydate);
@@ -44,38 +15,18 @@ function calcTimelyDate(dateofservice, days){
 }
 
 function mbivalidate(mbientered){    
-/*Medicare ID are Unique, randomly generated, and "non-intelligent." Non-intellegent means the characters do not have hidden or special meaning
-Format:
-• 11 characters in length, and made up of only numbers and uppercase letters.
-• The MBI’s 2nd, 5th, 8th, and 9th characters are always letters.
-• Characters 1, 4, 7, 10, and 11 are always numbers.
-• The 3rd and 6th characters are letters or numbers.
-• We don’t use dashes in the MBI. They aren’t part of our computer systems and we don’t use them in file formats.
-
-Example from CMS: 1EG4TE5MK73
-
+/*Medicare ID (MBI) example from CMS: 1EG4TE5MK73
+Position key from CMS:
 C A AN N A AN N A A N N
 Where positions hold numbers and letters?
 C – Numeric 1 thru 9 N – Numeric 0 thru 9 AN – Either A or N A – Alphabetic Character (A...Z); Excluding (S, L, O, I, B, Z)
-
-position 1: ^\d{1}
-Position 2: [AC-HJ-KM-NP-RT-Y]{1}
-Position 3: [AC-HJ-KM-NP-RT-Y\d]{1}
-Position 4: \d{1}
-Position 5: [AC-HJ-KM-NP-RT-Y]{1}
-Position 6: [AC-HJ-KM-NP-RT-Y\d]{1}
-Position 7: \d{1}
-Position 8: [AC-HJ-KM-NP-RT-Y]{1}
-Position 9: [AC-HJ-KM-NP-RT-Y]{1}
-Position 10: \d{1}
-Position 11: \d{1}
 */
 
 let mbiadjusted = mbientered.replace(/\s+/g, '').toUpperCase(); //remove all whitespace, and change to all uppercase. Upper case change needed even though CSS style set to text-transform.
 
 let mbire = /^\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y0-9]{1}\d{1}[AC-HJ-KM-NP-RT-Y]{1}[AC-HJ-KM-NP-RT-Y]{1}\d{1}\d{1}$/; 
 
-if (mbire.test(mbiadjusted)){ //if valid
+if (mbire.test(mbiadjusted)){ //if mbi valid
     document.getElementById("mbi").value = mbiadjusted;
     document.getElementById("mbivalid").style.color = "green";
     document.getElementById("mbivalid").innerHTML = `${mbiadjusted} is a valid Medicare ID`
@@ -96,6 +47,7 @@ function dateformatprint(datetype){
     return printdate;
 }
 
+//calculate dates in the past, based on the age passed to it.
 function agingar(age){
     let agingdate = new Date()
     agingdate.setDate(today.getDate() - age);
@@ -104,15 +56,17 @@ function agingar(age){
 }
 
 const today = new Date();
-document.getElementById("today").innerHTML = `Today's Date is ${dateformatprint(today)}`;
+document.getElementById("today").innerHTML = `Today's Date is ${dateformatprint(today)}`; //Displays in the header
 
 let aging90 = agingar(90);
 let aging180 = agingar(180);
 let aging365 = agingar(365);
 
+/*Display the aging AR*/
 document.getElementById("agingdates").innerHTML = `90 days ago: ${aging90}<br>
 180 days ago: ${aging180}<br>
 365 days ago: ${aging365}`;
 
+/*listen for change to MBI Validation input, that way it doesn't remain red after an invalid MBI format is entered*/
 document.getElementById("mbi").addEventListener('click', colorchange => document.getElementById("mbi").style.color = "black");
 
