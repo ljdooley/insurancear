@@ -1,3 +1,4 @@
+/*Fex Container. Flex items of this container are: .columngroup1 and .columngroup2*/
 main{
     display: flex;
     margin: auto;
@@ -6,7 +7,8 @@ main{
     flex-wrap: wrap;
 }
 
-.columngroup1{
+/*Flex Container. Flex items of this container are: .timelycalc & .timely dates */
+.columngroup1{ 
     column-count: 2;
     display: inline-flex;
     justify-content: space-between;
@@ -16,7 +18,8 @@ main{
     /*flex-grow: 1;*/
 }
 
-.columngroup2{
+/*Flex Container. Flex items of this container are: .agingar & .mbivalidate */
+.columngroup2{ 
     column-count: 2;
     display: inline-flex;
     justify-content: space-between;
@@ -26,6 +29,7 @@ main{
     /*flex-grow: 1;*/
 }
 
+/*add padding to the flex items */
 .timelycalc, .timelydates, .agingar, .mbivalidate{
     padding: 25px;
 }
@@ -34,6 +38,7 @@ main{
     font-weight: bold;
 }
 
+/*display entered MBI as uppercase regardless of how it is entered, JS function still needs to convert to true uppercase.*/
 #mbi{
     text-transform: uppercase;
 }

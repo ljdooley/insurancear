@@ -14,8 +14,9 @@
     </header>
 
     <main>
-        <div class = "columngroup1">
-        <section class = "timelycalc">
+        <!--class columngroup1 is the flex container that groups together class timelcalc and timelydates-->
+        <div class = "columngroup1"> 
+        <section class = "timelycalc"> <!--This section contains the Timely Filing Calculator input-->
         <h3>Timely Filing Calculator</h3>
             <label for="DOS">Date of Service</label><input type="date" id = "DOS"><br>
             <input type ="radio" id="90days" name="deadline" value = "90"><label for="90days">90 days </label>
@@ -24,22 +25,23 @@
             <button id ="calcdeadline" onclick="deadlinecalc(document.getElementById('DOS').valueAsDate, document.querySelector('input:checked').value)">Calculate</button>
         </section>
 
-        <section class = "timelydates">
+        <section class = "timelydates"> <!--This section contains where the Timely Filing Calculator results are displayed-->
         <h3>Timely Filing Dates</h3>
-            <p id="timelydeadline">Timely filing deadlines will display here</p>
+            <p id="timelydeadline">Timely filing deadlines will display here</p><!--results of timely filing calculation is displayed here-->
         </section>
         </div>
 
+        <!--class columngroup2 is the flex container that groups together class agingar and mbivalidate-->
         <div class = "columngroup2">
-        <section class = "agingar">
+        <section class = "agingar"> <!--This section displays the Aging AR dates that are calculated in the JS function agingar()-->
             <h3>Aging AR Dates</h3>
-            <p id ="agingdates">Put aging date calculations here</p>
+            <p id ="agingdates">Put aging date calculations here</p><!--results of the agingar function displayed here-->
         </section>
 
-        <section class = "mbivalidate">
+        <section class = "mbivalidate"> <!--This section is the MBI validation input, and where the output is displayed-->
         <h3>Medicare ID Validation</h3>    
             <input type="text" id="mbi"><button onclick="mbivalidate(document.getElementById('mbi').value)">Validate</button>
-            <p id="mbivalid"></p>
+            <p id="mbivalid"></p><!--results of MBI validation displayed here-->
         </section>
         </div>
     </main>
